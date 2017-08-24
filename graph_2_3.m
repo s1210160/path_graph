@@ -1,0 +1,77 @@
+G = digraph({'A(B, C, D, E, F)', 'A(B, C, D, E, F)'}, {'B(C, D, E, F)', 'D(B, C, E, F)'});
+G.Edges;
+
+G = addedge(G, {'A(C, D, E, F)', 'A(C, D, E, F)'}, {'B(C, D, E, F)', 'D(C, E, F)'});
+G = addedge(G, {'B(C, D, E, F)', 'B(C, D, E, F)', 'B(C, D, E, F)'}, {'A(C, D, E, F)', 'C(D, E, F)', 'E(C, D, F)'});
+G = addedge(G, {'A(B, C, E, F)', 'A(B, C, E, F)'}, {'B(C, E, F)', 'D(B, C, E, F)'});
+G = addedge(G, {'D(B, C, E, F)', 'D(B, C, E, F)'}, {'A(B, C, E, F)', 'E(B, C, F)'});
+
+G = addedge(G, {'A(B, C, F)', 'A(B, C, F)'}, {'B(C, F)', 'D(B, C, F)'});
+G = addedge(G, {'D(B, C, F)', 'D(B, C, F)'}, {'A(B, C, F)', 'E(B, C, F)'});
+G = addedge(G, {'E(B, C, F)', 'E(B, C, F)', 'E(B, C, F)'}, {'B(C, F)', 'D(B, C, F)', 'F(B, C)'});
+G = addedge(G, {'A(C, D, F)', 'A(C, D, F)'}, {'B(C, D, F)', 'D(C, F)'});
+G = addedge(G, {'B(C, D, F)', 'B(C, D, F)', 'B(C, D, F)'}, {'A(C, D, F)', 'C(D, F)', 'E(C, D, F)'});
+G = addedge(G, {'E(C, D, F)', 'E(C, D, F)', 'E(C, D, F)'}, {'B(C, D, F)', 'D(C, F)', 'F(C, D)'});
+G = addedge(G, {'A(C, E, F)', 'A(C, E, F)'}, {'B(C, E, F)', 'D(C, E, F)'});
+G = addedge(G, {'B(C, E, F)', 'B(C, E, F)', 'B(C, E, F)'}, {'A(C, E, F)', 'C(E, F)', 'E(C, F)'});
+G = addedge(G, {'D(C, E, F)', 'D(C, E, F)'}, {'A(C, E, F)', 'E(C, F)'});
+G = addedge(G, {'A(D, E, F)', 'A(D, E, F)'}, {'B(D, E, F)', 'D(E, F)'});
+G = addedge(G, {'B(D, E, F)', 'B(D, E, F)', 'B(D, E, F)'}, {'A(D, E, F)', 'C(D, E, F)', 'E(D, F)'});
+G = addedge(G, {'C(D, E, F)', 'C(D, E, F)'}, {'B(D, E, F)', 'F(D, E)'});
+
+G = addedge(G, {'A(B, C)', 'A(B, C)'}, {'B(C)', 'D(B, C)'});
+G = addedge(G, {'D(B, C)', 'D(B, C)'}, {'A(B, C)', 'E(B, C)'});
+G = addedge(G, {'E(B, C)', 'E(B, C)', 'E(B, C)'}, {'B(C)', 'D(B, C)', 'F(B, C)'});
+G = addedge(G, {'F(B, C)', 'F(B, C)'}, {'C(B)', 'E(B, C)'});
+G = addedge(G, {'A(C, D)', 'A(C, D)'}, {'B(C, D)', 'D(C)'});
+G = addedge(G, {'B(C, D)', 'B(C, D)', 'B(C, D)'}, {'A(C, D)', 'C(D)', 'E(C, D)'});
+G = addedge(G, {'E(C, D)', 'E(C, D)', 'E(C, D)'}, {'B(C, D)', 'D(C)', 'F(C, D)'});
+G = addedge(G, {'F(C, D)', 'F(C, D)'}, {'C(D)', 'E(C, D)'});
+G = addedge(G, {'A(C, F)', 'A(C, F)'}, {'B(C, F)', 'D(C, F)'});
+G = addedge(G, {'B(C, F)', 'B(C, F)', 'B(C, F)'}, {'A(C, F)', 'C(F)', 'E(C, F)'});
+G = addedge(G, {'D(C, F)', 'D(C, F)'}, {'A(C, F)', 'E(C, F)'});
+G = addedge(G, {'E(C, F)', 'E(C, F)', 'E(C, F)'}, {'B(C, F)', 'D(C, F)', 'F(C)'});
+G = addedge(G, {'A(D, E)', 'A(D, E)'}, {'B(D, E)', 'D(E)'});
+G = addedge(G, {'B(D, E)', 'B(D, E)', 'B(D, E)'}, {'A(D, E)', 'C(D, E)', 'E(D)'});
+G = addedge(G, {'C(D, E)', 'C(D, E)'}, {'B(D, E)', 'F(D, E)'});
+G = addedge(G, {'F(D, E)', 'F(D, E)'}, {'C(D, E)', 'E(D)'});
+G = addedge(G, {'A(D, F)', 'A(D, F)'}, {'B(D, F)', 'D(F)'});
+G = addedge(G, {'B(D, F)', 'B(D, F)', 'B(D, F)'}, {'A(D, F)', 'C(D, F)', 'E(D, F)'});
+G = addedge(G, {'C(D, F)', 'C(D, F)'}, {'B(D, F)', 'F(D)'});
+G = addedge(G, {'E(D, F)', 'E(D, F)', 'E(D, F)'}, {'B(D, F)', 'D(F)', 'F(D)'});
+G = addedge(G, {'A(E, F)', 'A(E, F)'}, {'B(E, F)', 'D(E, F)'});
+G = addedge(G, {'B(E, F)', 'B(E, F)', 'B(E, F)'}, {'A(E, F)', 'C(E, F)', 'E(F)'});
+G = addedge(G, {'C(E, F)', 'C(E, F)'}, {'B(E, F)', 'F(E)'});
+G = addedge(G, {'D(E, F)', 'D(E, F)'}, {'A(E, F)', 'E(F)'});
+
+
+G = addedge(G, {'A(B)', 'A(B)'}, {'B()', 'D(B)'});
+G = addedge(G, {'C(B)', 'C(B)'}, {'B()', 'F(B)'});
+G = addedge(G, {'D(B)', 'D(B)'}, {'A(B)', 'E(B)'});
+G = addedge(G, {'E(B)', 'E(B)', 'E(B)'}, {'B()', 'D(B)', 'F(B)'});
+G = addedge(G, {'F(B)', 'F(B)'}, {'C(B)', 'E(B)'});
+G = addedge(G, {'A(C)', 'A(C)'}, {'B(C)', 'D(C)'});
+G = addedge(G, {'B(C)', 'B(C)', 'B(C)'}, {'A(C)', 'C()', 'E(C)'});
+G = addedge(G, {'D(C)', 'D(C)'}, {'A(C)', 'E(C)'});
+G = addedge(G, {'E(C)', 'E(C)', 'E(C)'}, {'B(C)', 'D(C)', 'F(C)'});
+G = addedge(G, {'F(C)', 'F(C)'}, {'C()', 'E(C)'});
+G = addedge(G, {'A(D)', 'A(D)'}, {'B(D)', 'D()'});
+G = addedge(G, {'B(D)', 'B(D)', 'B(D)'}, {'A(D)', 'C(D)', 'E(D)'});
+G = addedge(G, {'C(D)', 'C(D)'}, {'B(D)', 'F(D)'});
+G = addedge(G, {'E(D)', 'E(D)', 'E(D)'}, {'B(D)', 'D()', 'F(D)'});
+G = addedge(G, {'F(D)', 'F(D)'}, {'C(D)', 'E(D)'});
+G = addedge(G, {'A(E)', 'A(E)'}, {'B(E)', 'D(E)'});
+G = addedge(G, {'B(E)', 'B(E)', 'B(E)'}, {'A(E)', 'C(E)', 'E()'});
+G = addedge(G, {'C(E)', 'C(E)'}, {'B(E)', 'F(E)'});
+G = addedge(G, {'D(E)', 'D(E)'}, {'A(E)', 'E()'});
+G = addedge(G, {'F(E)', 'F(E)'}, {'C(E)', 'E()'});
+G = addedge(G, {'A(F)', 'A(F)'}, {'B(F)', 'D(F)'});
+G = addedge(G, {'B(F)', 'B(F)', 'B(F)'}, {'A(F)', 'C(F)', 'E(F)'});
+G = addedge(G, {'C(F)', 'C(F)'}, {'B(F)', 'F()'});
+G = addedge(G, {'D(F)', 'D(F)'}, {'A(F)', 'E(F)'});
+G = addedge(G, {'E(F)', 'E(F)', 'E(F)'}, {'B(F)', 'D(F)', 'F()'});
+
+p1 = plot(G);
+p1.MarkerSize = 7;
+p1.Marker = 'o';
+p1.NodeColor = 'r';
