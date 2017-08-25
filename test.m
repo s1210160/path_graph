@@ -7,19 +7,30 @@ clear all
 
 % シミュレーション
 
-for p = 0: 0.1:0.5
+for p = 0.1: 0.1:0.5
     
     k = [];
     result = [];
     simu.expected_value = 0;
     calc.expected_value = 0;
     
+    % 確率行列
+    G = [0 1-p p 0;
+         p 0 0 1-p;
+         p 0 0 1-p;
+         0 1-p p 0];
+    [A B C D] = prob_matrix(G);
+    M(:, :, 1) = A;
+    M(:, :, 2) = B;
+    M(:, :, 3) = C;
+    M(:, :, 4) = D;
+    
     for trial=1:10000000
-        k(trial) = main(p);
+        k(trial) = main(M);
     end
 
     % 結果集計
-    for i=3:24
+    for i=3:100
         simu.result(i) = sum(k==i)/10000000;
         simu.expected_value = simu.expected_value + simu.result(i) * i;
 

@@ -5,14 +5,26 @@ function test( )
 close all
 clear all
 
-k = [];
-result = [];
-simu.expected_value = 0;
-calc.expected_value = 0;
-
 % シミュレーション
 
 for p = 0: 0.1:0.5
+    
+    k = [];
+    result = [];
+    simu.expected_value = 0;
+    calc.expected_value = 0;
+    
+    % 確率行列
+G = [0 1-p p 0;
+     p 0 0 1-p;
+     1-p 0 0 p;
+     0 p 1-p 0];
+[A B C D] = prob_matrix(G);
+M(:, :, 1) = A;
+M(:, :, 2) = B;
+M(:, :, 3) = C;
+M(:, :, 4) = D;
+    
     for trial=1:10000000
         k(trial) = main(p);
     end
@@ -43,7 +55,7 @@ for p = 0: 0.1:0.5
     yticks(0:0.1:1);
     ylabel('\fontsize{15} \it P(k)');
 
-
+    p
     simu.expected_value
     calc.expected_value
 end
