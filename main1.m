@@ -25,7 +25,7 @@ un_visit = [2 3 4];
 % Œo˜H’·
 k = 0;
 % Œo˜H
-path = zeros(size(M, 3))
+path = zeros(size(M, 3));
 rng(seed,'twister')
 
 while true

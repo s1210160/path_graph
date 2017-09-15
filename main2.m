@@ -67,11 +67,11 @@ while true
     % ñ¢ñKñ‚ÉZÉãÇÃçXêV
     for i=1:size(un_visit, 2)
         if un_visit(:, i) == now_cell
-            %if next == now_cell
+            if next == now_cell
                 un_visit(:, i) = [];
                 break;
         
-           %end
+           end
         end
     end
     

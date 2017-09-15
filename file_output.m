@@ -4,16 +4,16 @@ function file_output( file_name, data )
 
 csvwrite(strcat(file_name, '.csv'), data);
 
-for i=1:5
+for i=1:1:1
     
-    a = data(7:14, i);
+    a = data(12:19, i);
     figure;
     bar(a);
     xticklabels({'AÅ®B', 'AÅ®C', 'BÅ®A', 'BÅ®D', 'CÅ®A', 'CÅ®D', 'DÅ®B', 'DÅ®C'});
     ylim([0 5]);
     yticks(0:1:5);
     
-    saveas(gcf, strcat(file_name, strcat('_q=0', strcat(num2str(i), '.png'))));
+    saveas(gcf, strcat(file_name, strcat('_q=0', strcat(num2str(i-1), '.png'))));
 end
 
 
