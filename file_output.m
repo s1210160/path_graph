@@ -4,6 +4,7 @@ function file_output( file_name, data )
 
 csvwrite(strcat(file_name, '.csv'), data);
 
+%{
 for i=1:1:1
     
     a = data(12:19, i);
@@ -15,7 +16,7 @@ for i=1:1:1
     
     saveas(gcf, strcat(file_name, strcat('_q=0', strcat(num2str(i-1), '.png'))));
 end
-
+%}
 
 end
 

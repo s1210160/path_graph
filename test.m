@@ -7,14 +7,14 @@ clear all
     
 % シミュレーション
 
-for p=0:0.1:1
+for p=0.9:0.1:1
     
     close all
     
     result = [];
-    file_name = strcat('experiment/2_2/mov/ABDC/p=0', num2str(fix(p*10)));
+    file_name = strcat('experiment/2_2/mov+env/ABDC/p=0', num2str(fix(p*10)));
     
-    for q = 0:0.1:0
+    for q = 0:0.1:1
     
         % 確率行列
         %{
@@ -44,10 +44,9 @@ for p=0:0.1:1
             Env(:, :, i) = prob_matrix(Gq(i, :));
         end
 
-        for trial=1:10000
-            [k(trial) path] = main1(Mov, trial);
-            %[k(trial), path] = main2(Mov, Env, trial);
-            t = t + path;
+        for trial=1:1000000
+            %[k(trial)] = main1(Mov, trial);
+            [k(trial)] = main2(Mov, Env, trial);
         end
     
         % 結果出力
@@ -62,15 +61,6 @@ for p=0:0.1:1
         %result_calc(p)
         result(fix(q*10)+1, 1:2) = [q result_simulation(q, k)];
 
-        
-        result(12, fix(q*10)+1) = t(1, 2)/10000;
-        result(13, fix(q*10)+1) = t(1, 3)/10000;
-        result(14, fix(q*10)+1) = t(2, 1)/10000;
-        result(15, fix(q*10)+1) = t(2, 4)/10000;
-        result(16, fix(q*10)+1) = t(3, 1)/10000;
-        result(17, fix(q*10)+1) = t(3, 4)/10000;
-        result(18, fix(q*10)+1) = t(4, 2)/10000;
-        result(19, fix(q*10)+1) = t(4, 3)/10000;
         
     end
     

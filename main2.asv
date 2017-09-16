@@ -68,8 +68,6 @@ while true
     if flag == 1
         now_cell = next;
         k = k + penalty;
-    else
-        k = k + 1;
     end
     flag = 0;
     
@@ -92,6 +90,7 @@ while true
         %un_visit(:, 1) = [];
         now_cell = pre_cell;
     end
+    k = k + 1;
     
     pre_cell = now_cell;
     
