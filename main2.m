@@ -1,4 +1,4 @@
-function [k] = main2(Mov, Env, seed)
+function [k] = main2(TT, TF, FT, FF, p, q, seed)
 %UNTITLED4 この関数の概要をここに記述
 %   詳細説明をここに記述
 %
@@ -9,12 +9,10 @@ function [k] = main2(Mov, Env, seed)
 %
 
 % セル
-%cells = [1 2 3; 4 5 6];
 cells = [1 2; 3 4];
 
 % 事前経路
-%pre_path = [1 4 5 6 3 2];
-pre_path = [1 2 4 3];
+pre_path = [1 3 4 2];
 % 現在のセル
 now_cell = 1;
 % 1ステップ前のセル
@@ -27,6 +25,7 @@ k = 0;
 flag = 0;
 penalty = 5;
 rng(seed,'twister')
+
 
 while true
     
@@ -42,27 +41,25 @@ while true
     
     r1 = rand;
     r2 = rand;
+    r3 = rand;
     
     % 事前経路による次に向かうべきセルを求める
     for i=1:size(pre_path, 2)
         if pre_path(i) ==  now_cell
-            next = pre_path(mod(i,size(Mov, 3))+1);
+            next = pre_path(mod(i,size(TT, 3))+1);
             break;
         end
     end
     
     % 次に進むセル
-    now1 = next_cell(Mov(:, :, now_cell), r1);
-    now2 = next_cell(Env(:, :, now_cell), r2);
-    if now1 ~= now2
-        r3 = rand;
-        if r3 < 0.5
-            now_cell = now1;
-        else
-            now_cell = now2;
-        end
-    else
-        now_cell = now1;
+    if r1 > p && r2 > q
+        now_cell = next_cell(TT(:, :, now_cell), r3);
+    elseif r1 > p && r2 < q
+        now_cell = next_cell(TF(:, :, now_cell), r3);
+    elseif r1 < p && r2 > q
+        now_cell = next_cell(FT(:, :, now_cell), r3);
+    elseif r1 < p && r2 < q
+        now_cell = next_cell(FF(:, :, now_cell), r3);
     end
     
     if flag == 1

@@ -4,49 +4,49 @@ function test( )
 
 close all
 clear all
-    
-% シミュレーション
 
-for p=0.9:0.1:1
+folder = 'experiment/2_2/mov+env/ACDB/';
+
+
+tt = [0 0 1 0 ;
+      1 0 0 0 ;
+      0 0 0 1;
+      0 1 0 0];
+tf = [0.5 0 0.5 0 ;
+      1 0 0 0;
+      0 0 0.5 0.5;
+      0 0.5 0.5 0];
+ft = [0 1 0 0;
+      0 0 0 1;
+      1 0 0 0;
+      0 0 1 0];
+ff = [0.5 0.5 0 0;
+      0.5 0 0 0.5;
+      0.5 0 0.5 0;
+      0 0 1 0];
+
+  
+for i=1:size(tt, 1)
+    TT(:, :, i) = prob_matrix(tt(i, :));
+    TF(:, :, i) = prob_matrix(tf(i, :));
+    FT(:, :, i) = prob_matrix(ft(i, :));
+    FF(:, :, i) = prob_matrix(ff(i, :));
+end
+
+% シミュレーション
+for p=0:0.1:1
     
     close all
     
     result = [];
-    file_name = strcat('experiment/2_2/mov+env/ABDC/p=0', num2str(fix(p*10)));
+    file_name = strcat(folder, strcat('p=0', num2str(fix(p*10))));
     
     for q = 0:0.1:1
-    
-        % 確率行列
-        %{
-        G = [0 1-p 0 p 0 0;
-             p 0 1-2*p 0 p 0;
-             0 p 0 0 0 1-p;
-             1-p 0 0 0 p 0
-             0 p 0 1-2*p 0 p
-             0 0 p 0 1-p 0];
-        %}
-
-        Gp = [0 1-p p 0
-             p 0 0 1-p
-             1-p 0 0 p
-             0 p 1-p 0];
-        Gq = [0 1-q q 0
-             q 0 0 1-q
-             q 0 0 1-q
-             0 1-q q 0];
-
 
         k = [];
-        t = zeros(size(Gp, 1));
 
-        for i=1:size(Gp, 1)
-            Mov(:, :, i) = prob_matrix(Gp(i, :));
-            Env(:, :, i) = prob_matrix(Gq(i, :));
-        end
-
-        for trial=1:1000000
-            %[k(trial)] = main1(Mov, trial);
-            [k(trial)] = main2(Mov, Env, trial);
+        for trial=1:100000
+            [k(trial)] = main2(TT, TF, FT, FF, p, q, trial);
         end
     
         % 結果出力
@@ -58,7 +58,6 @@ for p=0.9:0.1:1
         ylim([0 1]);
         yticks(0:0.1:1);
         ylabel('\fontsize{15} \it P(k)');
-        %result_calc(p)
         result(fix(q*10)+1, 1:2) = [q result_simulation(q, k)];
 
         
@@ -74,11 +73,9 @@ for p=0.9:0.1:1
     ylabel('\fontsize{15} \it Expected value');
     plot(result(:, 1), result(:, 2), 'r*');
 
+    p
     result
     file_output(file_name, result);
-
-    result
-    t
 end
 
 

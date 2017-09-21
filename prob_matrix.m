@@ -4,7 +4,6 @@ function [A] = prob_matrix( G )
 
 A = [];
 
-
 for i=1:size(G, 2)
     if G(1, i) ~= 0
         A = [A [i; G(1, i)]];
